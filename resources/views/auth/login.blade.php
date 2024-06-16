@@ -103,9 +103,9 @@
                                             </div>
 
                                             <div class="mx-3 flex flex-1 justify-end py-3">
-                                                    <a href="{{route('auth.github')}}" > <i class="fa-brands fa-github fa-xl px-3 py-3 ml-3"></i>
+                                                    <a href="{{route('socialite.login','github')}}" > <i class="fa-brands fa-github fa-xl px-3 py-3 ml-3"></i>
                                                     </a>
-                                                    <a href="/socialite/google" > <i class="fa-brands fa-google fa-xl px-3 py-3 " style="color: #f71b02;"></i>
+                                                    <a href="{{route('socialite.login','google')}}" > <i class="fa-brands fa-google fa-xl px-3 py-3 " style="color: #f71b02;"></i>
                                                     </a>
                                             </div>
 

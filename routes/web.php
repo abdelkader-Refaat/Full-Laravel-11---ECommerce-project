@@ -48,9 +48,9 @@ Route::middleware('auth')->group(function () {
     // // call back route
     // Route::get('auth/{driver}/login',[SocialLoginController::class,'handleCallback'])->where('driver','google|github');
 
-    Route::get('/auth/github', [SocialLoginController::class, 'redirect'])->name('auth.github');
+    Route::get('/socialite/{driver}', [SocialLoginController::class, 'redirect'])->where('driver','google|github')->name('socialite.login');
 
-    Route::get('/auth/github/callback', [SocialLoginController::class, 'callback']);
+    Route::get('/socialite/{driver}/login', [SocialLoginController::class, 'callback'])->where('driver','google|github');
 
 // routes/web.php
 

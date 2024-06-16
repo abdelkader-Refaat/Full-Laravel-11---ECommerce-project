@@ -16,9 +16,11 @@ class HomeConroller extends Controller
 {
 
      public function index (){
-        $products = Product::paginate(15);
-        $comments = Comment::all();
-        return view("front.index",compact(["products" , "comments"]));
+        $data = [
+            "products" => Product::paginate(15),
+            "comments" => Comment::all(),
+        ];
+        return view("front.index" , $data);
      }
      public function news (){
         return view("front.news");
