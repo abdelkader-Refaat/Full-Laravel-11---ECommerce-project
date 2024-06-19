@@ -32,7 +32,8 @@ class HomeConroller extends Controller
      }
 
      public function shops (){
-        return view("front.shops");
+        $products = Product::paginate(15);
+        return view("front.shops",compact('products'));
      }
      public function about (){
         return view("front.about");

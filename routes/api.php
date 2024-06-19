@@ -10,13 +10,11 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('gethere', function (Request $request) {
+Route::get('/users', function (Request $request) {
 
     $user = User::first();
-
-    return $user = new UserResource($user);
+     $user = new UserResource($user);
+     return $user;
 
 
 });
-
-

@@ -18,7 +18,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/', [HomeConroller::class,'index'])->name('front.index');
     Route::get('/news', [HomeConroller::class,'news'])->name('front.news');
     Route::get('/products', [HomeConroller::class,'products'])->name('front.products');
-    Route::get('/products', [HomeConroller::class,'products'])->name('front.products');
     Route::get('/shops', [HomeConroller::class,'shops'])->name('front.shops');
     Route::get('/about', [HomeConroller::class,'about'])->name('front.about');
     Route::get('/category', [HomeConroller::class,'category'])->name('front.category');
