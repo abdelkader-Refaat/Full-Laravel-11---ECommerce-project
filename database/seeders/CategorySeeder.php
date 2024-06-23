@@ -18,19 +18,20 @@ class CategorySeeder extends Seeder
             'name' => '{"ar" : "جوالات" , "en" :"phones"}',
             'slug' => '%phones%',
             'description' => '{"ar" :  "أحدث أنواع الموبايلات", "en" : "newest mobiles cersions"}',
-            'image' => 'public/assets/uploads/Category/P9X1skPyAnkK7MHO4i5hrG9hz390VnfO1e1dikHq.png',
+            'image' => 'public/assets/uploads/Product/8si8iNw80w7MkxmJULpyWHpRIH3KNBkwk1kGO1jL.jpg',
             'is_showing' => 1,
-            'is_popular' => 0,
+            'is_popular' => 1,
             'meta_description' => '{"ar" : "لدينا أحدث الاجهزة يرجي زيارتنا " , "en" : "we have newest mobiles please visit us"}',
             'meta_title' => '{"en" : "cairo - Giza", "ar" : "القاهرة - الجيزة"}',
             'meta_keywords' => '{phones, mobiles, iphone}',
         ]);
 
         DB::table('categories')->insert([
-            'name' => '{"ar" : "جوالات" , "en" :"cars"}',
+            'name' => '{"ar" : "سيارات" , "en" :"cars"}',
             'slug' => '%cars%',
             'description' => '{"ar" :  "أحدث أنواع السيارات", "en" : "newest cars cersions"}',
-            'image' => 'public/assets/uploads/Category/P9X1skPyAnkK7MHO4i5hrG9hz390VnfO1e1dikHq.png',
+            'image' => 'public/assets/uploads/Product/8si8iNw80w7MkxmJULpyWHpRIH3KNBkwk1kGO1jL.jpg',
+
             'is_showing' => 1,
             'is_popular' => 1,
             'meta_description' => '{"ar" : "لدينا أحدث السيارات  يرجي زيارتنا " , "en" : "we have newest cars please visit us"}',

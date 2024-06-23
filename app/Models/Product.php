@@ -31,6 +31,13 @@ class Product extends Model
             'meta_title',
             'meta_keywords',
             'meta_description'];
+            protected function casts():array {
+                return [
+                    "meta_keywords" => 'array',
+                    'trend' => 'boolean',
+                    "status" => 'boolean'
+                ];
+            }
 
             public function category() : BelongsTo{
 

@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Notifications\SendEmailNotification;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Notification;
 
 class AdminController extends Controller
@@ -23,9 +25,11 @@ class AdminController extends Controller
          $data['categories'] =Category::count();
          $data['price'] = Order::sum('price');
 
-
+        //  if (Gate::allows('admin', Auth::user())) {
 
         return view('admin.dashboard', compact('data'));
+        //  } else {
+        //     abort(403);}
     }
     public function orders()
     {

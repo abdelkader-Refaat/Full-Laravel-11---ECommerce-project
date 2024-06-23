@@ -65,6 +65,12 @@
                         <!-- menu start -->
                         <nav class="main-menu">
                             <ul>
+                                @admin()
+                                <li
+                                    class="{{ Route::currentRouteName() == 'front.index' ? 'current-list-item' : ' '}}">
+                                    <a href="{{route('admin.dashboard')}}">{{ __('admin_sidebar.admin') }}</a>
+                                </li>
+                                @endadmin
                                 <li
                                     class="{{ Route::currentRouteName() == 'front.index' ? 'current-list-item' : ' '}}">
                                     <a href="/">{{ __('master.Home') }}</a>
@@ -321,6 +327,19 @@
     <!-- end copyright -->
 
     <!-- jquery -->
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6674f34e9d7f358570d1d3d4/1i0sdcqvp';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="{{ asset('assets/js/jquery-1.11.3.min.js') }}"></script>

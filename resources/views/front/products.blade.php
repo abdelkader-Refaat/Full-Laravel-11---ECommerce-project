@@ -77,7 +77,12 @@
                     </div>
                 @endforelse
             </div>
+
         </div>
+        <div class="flex justify-center  space-x-px text-s">
+            {{$products->links()}}
+        </div>
+
     </div>
     </div>
     <!-- end product section -->

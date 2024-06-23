@@ -16,6 +16,7 @@
             <h2 class="h5 no-margin-bottom">{{trans('admin_sidebar.Dashboard')}}</h2>
           </div>
         </div>
+
              @include('admin.layout.body')
         <footer class="footer">
           <div class="footer__block block no-margin-bottom">

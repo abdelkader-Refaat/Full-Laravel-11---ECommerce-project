@@ -2,9 +2,8 @@
 
 @section('content')
 
-<form action="{{route('send_user_email',$order->id)}}"  method="POST">
-    @csrf
-  <h1 class="form-control mb-3 flex-center">Sending Email to {{$order->email}}</h1>
+
+  <h1 class="form-control mb-3 flex-center">Sending Email to {{env('MAIL_FROM_ADDRESS')}}</h1>
 
 
   <div class="input-group mb-3">

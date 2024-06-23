@@ -1,13 +1,15 @@
 <?php
+namespace Route\Admin;
  use App\Http\Controllers\Admin\AdminController;
  use App\Http\Controllers\Admin\CategoryController;
  use App\Http\Controllers\Admin\ProductController;
  use Illuminate\Support\Facades\Route;
  use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+
         Route::group([
             'prefix'=> LaravelLocalization::setLocale().'/admin',
-            'middleware'=> ['auth','admin']], function () {
+            'middleware'=> ['auth','admin','localeSessionRedirect', 'localize']],function(){
 
         Route::get('/dashboard', [AdminController::class,'index'])->name('admin.dashboard');
         Route::get('/orders', [AdminController::class,'orders'])->name('admin.orders');

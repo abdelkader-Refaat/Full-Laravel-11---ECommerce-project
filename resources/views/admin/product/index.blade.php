@@ -35,7 +35,7 @@
                                 <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->category->name }}</td>
-                                <td>{{ $product->description }}</td>
+                                <td>{{Str::limit($product->description,10) }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->qty }}</td>
                                 <td><img class="rounded-full w-10 h-10" src="{{ Storage::url($product->image) }}"

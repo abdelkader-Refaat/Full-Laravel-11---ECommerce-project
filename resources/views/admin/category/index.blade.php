@@ -34,7 +34,7 @@
                 <tr>
                   <th scope="row">{{$i++}}</th>
                   <td>{{$category->name}}</td>
-                  <td>{{$category->description}}</td>
+                  <td>{{Str::limit($category->description,10)}}</td>
                   <td><img class="rounded-full w-10 h-10" src="{{Storage::url($category->image)}}" alt="" ></td>
                   <td>
                         @if ($category->is_showing == 1)

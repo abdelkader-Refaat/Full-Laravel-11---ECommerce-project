@@ -7,9 +7,13 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
+use App\Traits\test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\Storage;
 use Stripe;
 
 class HomeConroller extends Controller
@@ -17,7 +21,7 @@ class HomeConroller extends Controller
 
      public function index (){
         $data = [
-            "products" => Product::paginate(15),
+            "products" => Product::cursorPaginate(15),
             "comments" => Comment::all(),
         ];
         return view("front.index" , $data);
@@ -26,20 +30,20 @@ class HomeConroller extends Controller
         return view("front.news");
      }
      public function products (){
-        $products = Product::where('trend',"1")->get();
+        $products = Product::where('trend',"1")->cursorPaginate(15);
 
         return view("front.products",compact("products"));
      }
 
      public function shops (){
-        $products = Product::paginate(15);
+        $products = Product::cursorPaginate(15);
         return view("front.shops",compact('products'));
      }
      public function about (){
         return view("front.about");
      }
      public function category (){
-        $categories = Category::where("is_popular","1")->get();
+        $categories = Category::where("is_popular","1")->cursorPaginate(15);
         return view("front.category", compact('categories'));
      }
      public function get_category_slug ($slug){
@@ -152,4 +156,42 @@ class HomeConroller extends Controller
 
 
     }
+
+
+    //  #####  just for  testing ########
+
+    use Test;
+   public function test(){
+
+
+
+       //   $u = Category::select('name')?->withCount('products')->find(2);
+
+       //  return  $u . ':'.$u?->products_count;
+
+    //    return 'welcome this \'s fuest' ;
+    // Category::oldest()->ddRawSql();
+    // return Str::snake(Str::pluralStudly(class_basename($this)));
+
+    // function countTo4() {
+    //     yield from [1, 2, 3];
+    //     yield 4;
+    //   }
+
+    //   foreach(countTo4() as $number) {
+    //     echo $number . " -";
+    //   }
+
+    // echo date("h:m:sa"). "</br>";
+
+    // return Category::with(['products','currentProduct'])->get();
+    // return Self::tester();
+   }
+
+
+    // return base_path();
+    // __DIR__';
+    //   return auth()->user()->is_admin;
+
 }
+
