@@ -27,7 +27,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('trend')->default(0);
             $table->string('meta_title');
-            $table->json('meta_keywords');
+            $table->string('meta_keywords');
             $table->text('meta_description');
             $table->timestamps();
         });
