@@ -8,9 +8,7 @@ use App\Http\Controllers\HomeConroller;
 use App\Http\Controllers\SocialLoginController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-/// required route files /////////
-// require __DIR__.'/auth.php';
-// require __DIR__.'/admin.php';
+
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),
              'middleware' => ['localeSessionRedirect', 'localize']], function () {
