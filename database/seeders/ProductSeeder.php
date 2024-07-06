@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "name" => '{"ar" :"أيفون",  "en" :"iphone"}',
-                "slug" => "%iphones%",
+                "slug" => "iphones",
                 "short_description" => '{"ar" : "أفضل أنواع الموبايلات الأيفون لديناأحدث الإصدارات ", "en" : "newest iphone"}',
                 "image" => "public/assets/uploads/Product/YUdL8WStcLTGgA4TA65m8gM3pQHk9hs7BRduUqWO.jpg",
                 "price" => "1000",
@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
              [
             "category_id" => 2,
             "name" => '{"ar" :"سيارات",  "en" :"cars"}',
-            "slug" => "%cars%",
+            "slug" => "cars",
             "short_description" => '{"ar" : "أفضل أنواع  السيارات لديناأحدث الإصدارات ", "en" : "newest cars"}',
             "image" => "public/assets/uploads/Product/zRZ5iU875Mvcy9SgsRP5PgsgwY6Pj3hQZCcKFOu8.jpg",
             "price" => "1000",
@@ -52,7 +52,7 @@ class ProductSeeder extends Seeder
          ],
          [ "category_id" => rand(1,2),
          "name" => '{"ar" :"سيارات",  "en" :"cars"}',
-         "slug" => "%carsss%",
+         "slug" => "car2s",
          "short_description" => '{"ar" : "أفضل أنواع  السيارات لديناأحدث الإصدارات ", "en" : "newest cars"}',
          "image" => "public/assets/uploads/Product/zRZ5iU875Mvcy9SgsRP5PgsgwY6Pj3hQZCcKFOu8.jpg",
          "price" => "1000",

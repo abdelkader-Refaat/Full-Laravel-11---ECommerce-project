@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('pincode')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->rememberToken()->default('jhdfvjhsdc4798237uqch4r1y34731347ruehfur');
             $table->timestamps();
         });
 

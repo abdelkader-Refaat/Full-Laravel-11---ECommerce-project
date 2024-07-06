@@ -93,7 +93,7 @@
             });
             $('.deletebutton').click(function(e) {
                 e.preventDefault();
-                var delete_id = $(this).closest("form").find('.deleteProduct').val();
+                let delete_id = $(this).closest("form").find('.deleteProduct').val();
 
 
                 swal({
@@ -105,7 +105,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            var data = {
+                            let data = {
                                 "_token" :  $('input[name="csrf-token"]').val(),
                                 "id"  : delete_id,
                             };
@@ -116,7 +116,6 @@
                                 success: function(response) {
                                     swal(response.status, {
                                       icon: "success",
-
                                     }).then((result) => {
                                         location.reload();
 

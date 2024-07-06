@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,6 +58,12 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        'monitor' => [
+        'mysql' => [
+            'ping' => true, // Enable or disable pinging
+            'timeout' => 2, // Timeout in seconds for each ping
+        ],
+    ],
 
         'mariadb' => [
             'driver' => 'mariadb',

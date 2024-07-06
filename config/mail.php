@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => 'mailgun',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,6 +34,10 @@ return [
     |            "failover", "roundrobin"
     |
     */
+        'mailgun' => [
+        'transport' => 'mailgun',
+
+        ],
 
     'mailers' => [
 
@@ -62,7 +66,7 @@ return [
         ],
 
         'resend' => [
-            'transport' => 'resend',
+            'key' => env('RESEND_KEY'),
         ],
 
         'sendmail' => [

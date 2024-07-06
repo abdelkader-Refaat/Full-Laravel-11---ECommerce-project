@@ -11,10 +11,11 @@
 @section('content')
     <!--single product -->
     <div class="single-product mt-150 mb-150">
-        <form action="{{ route('cart.store', $product->id) }}" method="post">
+        <form action="{{ route('cart.store', $product->id) }}" method="POST">
             @csrf
-            @method('POST')
+            @method('post')
         <div class="container">
+
             <div class="row">
                 <div class="col-md-5">
                     <div class="single-product-img">

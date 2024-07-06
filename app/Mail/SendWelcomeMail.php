@@ -14,11 +14,11 @@ class SendWelcomeMail extends Mailable
     use Queueable, SerializesModels;
 
 
-     private $message;
+     public string $message;
     /**
      * Create a new message instance.
      */
-    public function __construct($message)
+    public function __construct(string $message)
     {
         $this->message = $message;
     }

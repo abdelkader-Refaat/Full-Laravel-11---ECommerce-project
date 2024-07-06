@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\TrendProductsScope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -48,5 +50,18 @@ class Product extends Model
                return $this->hasMany(Comment::class);
 
             }
+            // global scope return just trend products
+            protected static function booted() :void
+            {
+                static::addGlobalScope(new TrendProductsScope);
+            }
+            //local scope for active status products
+            public function scopeStatus(Builder $query): void
+            {
+                $query->where('status', 1);
+
+
+            }
+
         }
 

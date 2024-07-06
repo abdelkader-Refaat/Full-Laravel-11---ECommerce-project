@@ -9,8 +9,8 @@
         return $request->user();
     })->middleware('auth:sanctum');
 
-    Route::get('/users', function (Request $request) {
-        $user = User::all();
+    Route::get('/latest-users', function (Request $request) {
+        $user = User::latest()->limit(5)->get();
         return UserResource::collection($user);
 
     });

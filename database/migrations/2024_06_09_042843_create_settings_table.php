@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('tiktok');
             $table->timestamps();
         });
+        // Schema::rename('settings', 'details');
     }
 
     /**

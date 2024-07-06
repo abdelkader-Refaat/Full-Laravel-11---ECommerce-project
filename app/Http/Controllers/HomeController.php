@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendWelcomeMail;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Role;
+use App\Models\Scopes\TrendProductsScope;
 use App\Models\User;
 use App\Traits\test;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Illuminate\Support\Number;
 use Stripe;
+
+use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends Controller
 {
@@ -30,8 +37,7 @@ class HomeController extends Controller
 
     public function products()
     {
-        $products = Product::where('trend', '1')->cursorPaginate(15);
-
+        $products = Product::where('trend', '1')->paginate(15);
         return view('front.products', compact('products'));
     }
 
@@ -55,10 +61,11 @@ class HomeController extends Controller
             return redirect()->route('front.category')->with('error', 'your searched category not found');
         }
     }
-    public function get_single_product_slug($slug)
+    public function slug($slug = 'slug')
     {
         if (Product::where('slug', $slug)->exists()) {
             $product = Product::where('slug', $slug)->first();
+
             return view('front.single_product', compact('product'));
         } else {
             return redirect()->route('front.category_slug', compact('slug'))->with('error', 'your searched category not found');
@@ -148,19 +155,46 @@ class HomeController extends Controller
 
     //  #####  just for  testing ########
 
-    use Test;
-    public function test()
+
+
+    public function test(Request $request)
     {
-          $user = auth()->user()->name;
-        return    Gate::allowIf($user) ? $user : 'not found';
+        return auth()->user()?->role ?:  'r';
+
+
+
 
     }
 
+
+
+
     /*
+    return  Product::withoutGlobalScope(TrendProductsScope::class)->get();
 
-      $u = Category::select('name')?->withCount('products')->find(2);
-    return $mail = Str::of("abdelkader")->mask('*',2,-2);
+    return response()->json(DB::table('categories')->pluck('name'));
+$users=  User::with('roles')?->findMany([1,2,3]);
+$role =  Role::where('name' , 'admin')->first();
+foreach($users as $user){
+return $user->roles()->sync($role->id);
+    return  class_basename($this);
+    $cat = Category::with('products')->find(2);
+    try {
+      return   $user = Category::findOrFail(1000);
 
+    } catch (\Throwable $th) {
+      echo $th->getMessage();
+    }
+     $pros =  $cat->products;
+    foreach($pros as $pro){
+        return nl2br($pro->short_description) ;
+    }
+    return  $formattedCurrency ='£' . number_format( 12345.67); // Output: $12,345.67
+    return   Category::inRandomOrder()->take(2)->pluck('name');
+    return auth()->user()?->id ? 'true': 'null';
+$u = Category::select('name')?->withCount('products')->find(2);
+return $mail = Str::of("abdelkader")->mask('*',2,-2);
+    return nl2br(implode("\n" , $aar));
         return  $u . ':'.$u?->products_count;
 
        return 'welcome this \'s fuest' ;

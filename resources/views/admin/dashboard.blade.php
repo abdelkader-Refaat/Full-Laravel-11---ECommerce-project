@@ -4,7 +4,7 @@
     @include('admin.layout.style')
   </head>
   <body>
-   @include('admin.layout.header')
+   @include('admin.layout.header')x
 
     <div class="d-flex align-items-stretch">
       <!-- Sidebar Navigation-->
