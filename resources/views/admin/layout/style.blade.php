@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-@vite('resources/css/app.css')
+@vite(['resources/css/app.css','resources/js/app.js'])
+
 <!-- Bootstrap CSS-->
 <link rel="stylesheet" href="{{asset('/admin/vendor/bootstrap/css/bootstrap.min.css')}}">
 <!-- Font Awesome CSS-->

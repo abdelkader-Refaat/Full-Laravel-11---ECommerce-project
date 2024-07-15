@@ -6,5 +6,3 @@ return [
     "admin" => "Admin Panel"
 ];
 
-
-?>

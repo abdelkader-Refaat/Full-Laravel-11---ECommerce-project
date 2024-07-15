@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Product::class);
+            $table->foreignIdFor(Product::class);  //   $table->morphs('commentable');  This adds commentable_id and commentable_type columns
             $table->string('name')->nullable();
             $table->longText('comment')->nullable();
             $table->bigInteger('user_id')->nullable();

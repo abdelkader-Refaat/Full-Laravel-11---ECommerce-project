@@ -74,7 +74,7 @@
 
                   <td class="flex justify-center">
 
-                  <a onclick="return confirm('are you sure')"  href="{{route('order.delivered',$order->id)}}" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><i class="fa-solid fa-cart-shopping" style="color: #FFD43B;"></i>{{__('order.delivered')}}</a>
+                  <a id="delivery" onclick="return confirm('are you sure')"  href="{{route('order.delivered',$order->id)}}" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><i class="fa-solid fa-cart-shopping" style="color: #FFD43B;"></i>{{__('order.delivered')}}</a>
 
                   </td>
                   <td><a  href="{{route('order.print',$order->id)}}" class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"><i class="fa-solid fa-print" style="color: #FFD43B;"></i>PRINT</a></td>
@@ -94,3 +94,28 @@
 
 
      @endsection
+
+     {{--
+@section('script')
+
+ <script>
+    $(document).ready(function() {
+        $('#delivery').click(function() {
+            $.ajax({
+                url: '{{ route('front.order') }}', // Your route here
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    // Assuming response has a 'newClass' key with the new class name
+                    $('#shippign_status').removeClass().addClass();
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error: ' + status + error);
+                }
+            });
+        });
+    });
+</script>
+@endsection --}}

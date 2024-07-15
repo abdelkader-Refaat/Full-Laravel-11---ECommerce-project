@@ -2,19 +2,19 @@
 
 namespace App\Providers;
 
+use App\Models\Product;
 use App\Models\User;
 use App\Observers\UserObserver;
-use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Database\Console\Migrations\FreshCommand;
+use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,7 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(Connection::class, function ($app) {
+			return new Connection('mysql');
+		});
     }
 
     /**
@@ -34,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
         Paginator::useBootstrapFive();   // used for pagination link activation
+        View::share('latestPosts', Product::latest()->take(5)->get());
+
 
          // # generating an observer
         User::observe(UserObserver::class);
@@ -53,6 +57,10 @@ class AppServiceProvider extends ServiceProvider
         });
         // FreshCommand::prohibit(App::isProduction());
         DB::prohibitDestructiveCommands(App::isProduction());  //prevent migration in production env(APP_ENV)
+
+
+
+
 
 
         // define admin Gate

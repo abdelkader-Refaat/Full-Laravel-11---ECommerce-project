@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
                     UserSeeder::class,
                     CategorySeeder::class,
-                    ProductSeeder::class]);
-        // $users = User::factory(10)->create();
+                    ProductSeeder::class,
+                    RoleSeeder::class]);
+        $users = User::factory(10)->create();
 
-        // Category::factory(20)->create([
+        Category::factory(20)->create([
 
-        // ]);
+        ]);
     }
 }

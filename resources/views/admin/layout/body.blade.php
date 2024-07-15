@@ -1,4 +1,3 @@
-
 <section class="no-padding-top no-padding-bottom">
     <div class="container-fluid">
       <div class="row">

@@ -10,6 +10,6 @@ Artisan::command('inspire', function () {
 
 //Schedule::command('send Email')->weekly();
 
-Artisan::command('greet {name}', function ($name) {
+Artisan::command('greet{name}', function ($name) {
     $this->info("Hello, {$name}!");
 })->describe('Greet a user by their name');

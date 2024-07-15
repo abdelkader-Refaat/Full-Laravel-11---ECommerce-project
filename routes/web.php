@@ -1,7 +1,8 @@
-<?php
+    <?php
 
 use App\Events\PodcastProcessed;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaypalController;
@@ -31,7 +32,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
             Route::get('/stripe/{price}',  'stripe')->name('front.stripe');
             Route::post('/stripe/{price}', 'stripePost')->name('stripe.post');
 
-
+//    ####### Paypal Configration & integration   #########
             Route::get('/process-paypal',[PaypalController::class , 'processPaypal'])->name('processPaypal');
             Route::get('/success',[PaypalController::class , 'processSuccess'])->name('success');
             Route::get('/cancel',[PaypalController::class , 'processCancel'])->name('cancel');
@@ -63,18 +64,23 @@ Route::middleware('auth')->group(function () {
 // Route::get('auth/{driver}/login',[SocialLoginController::class,'handleCallback'])->where('driver','google|github');
 
 Route::get('/socialite/{driver}', [SocialLoginController::class, 'redirect'])
-    ->where('driver', 'google|github')
+    ->where('driver', 'google|github|facebook')
     ->name('socialite.login');
 
-Route::get('/socialite/{driver}/login', [SocialLoginController::class, 'callback'])->where('driver', 'google|github');
+Route::get('/socialite/{driver}/login', [SocialLoginController::class, 'callback'])->where('driver', 'google|github|facebook');
 
 // firing event
 Route::get('fire-podcastprocess-event' , function(){
     event(new PodcastProcessed(['message' => 'welocme from podcast event']));
     return ucfirst('your event has been fired correctly');
 });
+// chat with pusher
+Route::get('chat/{user_id}',[ChatController::class , 'chatForm'])->middleware('auth');
+Route::post('chat/{user_id}',[ChatController::class , 'sendMesssage'])->middleware('auth');
 // ####### test  route ##########
-Route::get('/test', [HomeController::class, 'test']);
+// Route::view('/test','test');
+Route::get('/test', [HomeController::class, 'test'])->name('test');
+Route::get('/send-sms', [HomeController::class, 'sendSms'])->name('sms');
 
 Route::get('/mail', [MailController::class, 'sendMail']);
 

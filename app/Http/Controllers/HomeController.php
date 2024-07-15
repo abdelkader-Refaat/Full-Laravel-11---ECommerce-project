@@ -3,29 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendWelcomeMail;
-use App\Models\Cart;
-use App\Models\Category;
-use App\Models\Comment;
-use App\Models\Order;
-use App\Models\Product;
+use App\Models\{Cart,Category,Order, Product ,Comment};
 use App\Models\Role;
 use App\Models\Scopes\TrendProductsScope;
 use App\Models\User;
 use App\Traits\test;
 use Carbon\Carbon;
 use DateTime;
+use Exception;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Number;
 use Stripe;
-
-use function PHPUnit\Framework\isEmpty;
+use Throwable;
 
 class HomeController extends Controller
 {
+
     public function index()
     {
         $data = [
@@ -137,6 +144,7 @@ class HomeController extends Controller
     {
         if (Auth::id()) {
             Comment::insert([
+                'product_id' => Product::first()->id,
                 'comment' => $request->comment,
                 'name' => Auth::user()->name,
                 'user_id' => Auth::user()->id,
@@ -152,24 +160,82 @@ class HomeController extends Controller
 
         return view('front.products', compact('products'));
     }
+    //  sending sms message to our mobile app .
+    public function sendSms(){
+        $basic  = new \Vonage\Client\Credentials\Basic("d88a7d65", "3kHcr4W3rNB9UVa9");
+        $client = new \Vonage\Client($basic);
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("201095650959", 'Eng:Abdelkader', 'Welcome to our laravel Ecommerce application ')
+        );
 
-    //  #####  just for  testing ########
+        $message = $response->current();
 
-
-
-    public function test(Request $request)
-    {
-        return auth()->user()?->role ?:  'r';
-
-
-
+        if ($message->getStatus() == 0) {
+            echo "The message was sent successfully to your mobile \n";
+        } else {
+            echo "The message failed with status   : " . $message->getStatus() . "\n";
+        }
 
     }
 
+    //  #####  just for  testing ########
 
+    public function test(?Request $request)
+    {
 
+            return true;
+
+    }
 
     /*
+     //arguments by name in php ^ 8+
+    function  send(string $name, string $title){
+     return ' name is ' . $name . ' ' . 'title is '. $title;
+    }
+    return send(title:'mansoura' , name:'ahmed' );
+
+     $file = Storage::disk('public')->path('assets/img/products/product-img-1.jpg');
+     $fileName = basename($file);
+
+     if(empty($fileName)){
+
+     }
+$token = $user->createToken('token-name', ['server:update'])->plainTextToken;
+$user->update(['remember_token' => $token ]);
+return $user->remember_token;
+
+    Cache::put('key', 600);
+
+    return $value = Cache::get('key');
+    $arr = [1,2,3,4,5];
+    return $name = in_array(6 , $arr) ? 'exists' :'not found';
+    return $request->method();
+    echo Carbon::now()->format('y-M-D');
+if($request->url() == $url = url('test')){
+   return $url;
+return csrf_token() . 'and lang : '. App::currentLocale();
+
+
+    Collection::macro('toUpper', function () {
+        return $this->map(function (string $value) {
+            return str()->upper($value);
+        });
+    });
+
+    $collection = collect(['first', 'second']);
+
+    return $upper = $collection->toUpper();
+    $path = base_path('config/app.php');
+    if(File::exists($path)){
+        $config = File::get($path);
+            return response()->json(['config' => $config]);
+
+         }
+
+    $collection = collect ([1,2,3,4,5]);
+   return  $multi = $collection->map(function( int $item , $key){
+        return $item * 2;
+    });
     return  Product::withoutGlobalScope(TrendProductsScope::class)->get();
 
     return response()->json(DB::table('categories')->pluck('name'));

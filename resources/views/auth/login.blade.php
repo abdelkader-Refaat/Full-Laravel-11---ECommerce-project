@@ -85,7 +85,7 @@
                                                         class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
                                                         name="remember">
                                                     <span
-                                                        class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                                                        class="ms-2 text-sm text-gray-200 dark:text-gray-200">{{ __('Remember me') }}</span>
                                                 </label>
                                             </div>
 
@@ -102,16 +102,18 @@
                                                 </x-primary-button>
                                             </div>
 
-                                            <div class="mx-3 flex flex-1 justify-end py-3">
+                                            <div class="mx-2 flex flex-1 justify-end py-2">
                                                     <a href="{{route('socialite.login','github')}}" > <i class="fa-brands fa-github fa-xl px-3 py-3 ml-3"></i>
                                                     </a>
-                                                    <a href="{{route('socialite.login','google')}}" > <i class="fa-brands fa-google fa-xl px-3 py-3 " style="color: #f71b02;"></i>
+                                                    <a href="{{route('socialite.login','google')}}" > <i class="fa-brands fa-google fa-xl px-3 py-3 " ></i>
+                                                    </a>
+                                                    <a href="{{route('socialite.login','facebook')}}" > <i class="fa-brands fa-facebook fa-xl px-3 py-3 ml-3"></i>
                                                     </a>
                                             </div>
 
                                         </form>
                                         <div class="flex items-center justify-end mt-4">
-                                                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                                                <a class="underline text-sm text-gray-200 dark:text-gray-200 hover:text-gray-200 dark:hover:text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                                                     href="{{ route('register') }}">
                                                         {{ __('Register') }}
 
@@ -179,13 +181,13 @@
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                <span class="ms-2 text-sm text-gray-200 dark:text-gray-200">{{ __('Remember me') }}</span>
             </label>
         </div>
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                <a class="underline text-sm text-gray-200 dark:text-gray-200 hover:text-gray-200 dark:hover:text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif

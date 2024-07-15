@@ -7,8 +7,10 @@
     "require": {
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^2.2",
+        "beyondcode/expose": "^2.6",
         "hepplerdotnet/flash-toastr": "^5.6",
         "laravel/framework": "^11.9",
+        "laravel/reverb": "@beta",
         "laravel/sanctum": "^4.0",
         "laravel/socialite": "^5.14",
         "laravel/tinker": "^2.9",
@@ -17,7 +19,8 @@
         "resend/resend-php": "^0.12.0",
         "spatie/laravel-translatable": "^6.7",
         "srmklive/paypal": "~3.0",
-        "stripe/stripe-php": "^14.9"
+        "stripe/stripe-php": "^14.9",
+        "vonage/client": "^4.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
@@ -35,7 +38,12 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+
+        "files": [
+            "app/Helpers/helper_functions.php"
+        ]
+
     },
     "autoload-dev": {
         "psr-4": {

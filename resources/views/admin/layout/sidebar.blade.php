@@ -16,8 +16,8 @@
                 <li class={{ Route::currentRouteName() == 'products.index' ? "active" : ''}}><a href="{{route('products.index')}}"> <i class="icon-grid"></i>{{trans('master.product')}} </a></li>
                 <li class={{ Route::currentRouteName() == 'admin.orders' ? "active" : ''}}><a href="{{route('admin.orders')}}"> <i class="icon-grid"></i>{{trans('master.order')}} </a></li>
 
-            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
-              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+            <li><a href="#exampledropdownDropdown" aria-expanded="true" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
+              <ul id="exampledropdownDropdown" class="list-unstyled ">
                 <li><a href="#">Page</a></li>
                 <li><a href="#">Page</a></li>
                 <li><a href="#">Page</a></li>

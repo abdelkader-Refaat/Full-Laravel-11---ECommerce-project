@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Broadcast;
 
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
+//   this is a private channel users can subscribe to about reverb web socket.
+Broadcast::channel('management.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Scopes\TrendProductsScope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -50,6 +51,11 @@ class Product extends Model
                return $this->hasMany(Comment::class);
 
             }
+            // public function comments()
+            // {
+            //     return $this->morphMany(Comment::class, 'commentable');
+            // }
+
             // global scope return just trend products
             protected static function booted() :void
             {
@@ -62,6 +68,15 @@ class Product extends Model
 
 
             }
+            // Mutattor
+            protected function name(): Attribute
+            {
+                return Attribute::make(
+                    get: fn (string $value) => strtoupper($value),
+                    set: fn (string $value) => strtolower($value),
+                );
+            }
+
 
         }
 

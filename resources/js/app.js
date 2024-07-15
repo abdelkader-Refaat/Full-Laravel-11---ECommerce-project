@@ -1,4 +1,6 @@
 import './bootstrap';
+import 'flowbite';
+
 
 // import 'flowbit';
 
